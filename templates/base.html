@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Visual Event Recognition</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/Bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/static/Bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/Bootstrap/grid.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/static/Bootstrap/assets/js/html5shiv.js"></script>
+      <script src="/static/Bootstrap//assets/js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+   <div class="container">
+
+      <div class="page-header">
+        <h1>Visual Event Recognition</h1>
+        <p class="lead">Demo to present how to recognize visual events in unlabelled videos.</p>
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick= "showTrainVideo()">Submit</button>
+      <button type="button" class="btn btn-default">Preview</button>
+
+      <div class = "videoList">
+        {% block video %}{% endblock %}
+      </div>"
+
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/Bootstrap/assets/js/jquery.js"></script>
+    <script src="/static/Bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/static/Bootstrap/assets/js/holder.js"></script>
+  </body>
+</html>

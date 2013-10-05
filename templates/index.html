@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block video %}
+
+{% if videoList %}
+
+
+    {% for labelVideos in videoList %}
+
+        <h3>{{ labelVideos.0.label }}</h3>
+
+        <div class="row">
+            {% for video in labelVideos %}
+                <div class = "col-md-4">
+                  <embed src="/static/Youtube_Videos/{{ video.path }}"
+                        autostart="false" height = 260
+                    ></embed>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+
+{% endif %}
+{% endblock %}
