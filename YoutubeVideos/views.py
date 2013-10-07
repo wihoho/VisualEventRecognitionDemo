@@ -45,10 +45,6 @@ def getTestVideos(num):
 
     return testVideos
 
-
-
-
-
 def recognition(request):
 
     return render(request, "base.html")
@@ -77,7 +73,7 @@ def previewTrainData(request):
             if num > 10:
                 temp = []
                 for videos in trainVideos:
-                    temp.append(videos[:10])
+                    temp.append(videos[:3])
 
                 context = {"videoList": temp}
             else:
@@ -162,7 +158,8 @@ def testSVM(request):
 
     kernel_params = []
     kernel_params.append(gramma0)
-    baseKernels = util.constructBaseKernels(["rbf", "lap", "isd", "id"], kernel_params, testTotrainDistance)
+    distance = testTotrainDistance ** 2
+    baseKernels = util.constructBaseKernels(["rbf", "lap", "isd", "id"], kernel_params, distance)
 
     typeKernels = ["rbf", "lap", "isd", "id"]
     predictLabels = []
