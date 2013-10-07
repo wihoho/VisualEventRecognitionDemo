@@ -13,8 +13,16 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^recognition/$', 'YoutubeVideos.views.index'),
+    url(r'^recognition/$', 'YoutubeVideos.views.recognition'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^previewTrainData/$', 'YoutubeVideos.views.previewTrainData'),
+    url(r'^train/$', 'YoutubeVideos.views.trainSVM'),
+    url(r'^previewTestData/$', 'YoutubeVideos.views.selectTestVideos'),
+    url(r'^test/$', 'YoutubeVideos.views.testSVM'),
+
+
+
+
 )
 
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns

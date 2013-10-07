@@ -1,0 +1,64 @@
+{% block predict %}
+    {% if distance %}
+
+    <table class = "table">
+       {% for i in distance %}
+           <tr>
+                {% for j in i %}
+                    <td>{{ j }}</td>
+                {% endfor %}
+
+           </tr>
+       {% endfor %}
+    </table>
+
+
+    {% endif %}
+
+    <table class = "table">
+
+       <tr>
+            <td>Original Labels</td>
+            {% for label in originalLabels %}
+                <td>{{ label }}</td>
+            {% endfor %}
+            <td>Accuracy</td>
+       </tr>
+
+       <tr>
+           <td>RBF Kernel</td>
+           {% for label in predictLabels.0 %}
+               <td>{{ label }}</td>
+           {% endfor %}
+           <td>{{ accuracies.0 }}</td>
+       </tr>
+
+       <tr>
+           <td>LAP Kernel</td>
+           {% for label in predictLabels.1 %}
+               <td>{{ label }}</td>
+           {% endfor %}
+           <td>{{ accuracies.1 }}</td>
+       </tr>
+
+       <tr>
+           <td>ISD Kernel</td>
+           {% for label in predictLabels.2 %}
+               <td>{{ label }}</td>
+           {% endfor %}
+           <td>{{ accuracies.2 }}</td>
+       </tr>
+
+       <tr>
+           <td>ID Kernel</td>
+           {% for label in predictLabels.3 %}
+               <td>{{ label }}</td>
+           {% endfor %}
+           <td>{{ accuracies.3 }}</td>
+       </tr>
+
+    </table>
+
+
+
+{% endblock %}

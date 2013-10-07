@@ -3632,7 +3632,7 @@ input[type="button"].btn-block {
 }
 
 .input-group .form-control {
-  width: 100%;
+  /*width: 100%;*/
   margin-bottom: 0;
 }
 

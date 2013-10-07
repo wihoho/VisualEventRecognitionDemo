@@ -23,7 +23,95 @@
       <script src="/static/Bootstrap//assets/js/respond.min.js"></script>
     <![endif]-->
 
-  </head>
+      <style>
+
+            .form-control {
+                width: 15%;
+            }
+
+            #submitButton {
+                margin-left: 10px;
+            }
+
+
+            #previewButton {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+      </style>
+
+
+<script>
+
+
+function previewTrain(){
+
+    var numberOfTrainNum = document.getElementById("trainNum").value
+
+    $.ajax({
+        type: "GET",
+        data: {num: numberOfTrainNum},
+        url: "/previewTrainData",
+
+       success: function(data){
+           document.getElementById("trainVideos").innerHTML = data;
+         }
+    });
+}
+
+function train(){
+    $.ajax({
+        type: "GET",
+        url: "/train",
+
+        success: function(data){
+            document.getElementById("trainDistanceTable").innerHTML = data;
+        }
+    });
+
+    $('html, body').animate({
+        scrollTop: $("#trainDistanceTable").offset().top
+    }, 1500);
+
+}
+
+
+function previewTest(){
+
+    var numberOfTestNum = document.getElementById("testNum").value
+
+    $.ajax({
+        type: "GET",
+        data: {num: numberOfTestNum},
+        url: "/previewTestData",
+
+       success: function(data){
+           document.getElementById("testVideos").innerHTML = data;
+         }
+    });
+}
+
+function test(){
+    $.ajax({
+       type: "GET",
+        url: "/test",
+
+        success: function(data){
+            document.getElementById("testDistanceTable").innerHTML = data;
+        }
+    });
+
+    $('html, body').animate({
+        scrollTop: $("#testDistanceTable").offset().top
+    }, 1500);
+
+}
+
+</script>
+
+
+</head>
 
   <body>
 
@@ -34,12 +122,40 @@
         <p class="lead">Demo to present how to recognize visual events in unlabelled videos.</p>
       </div>
 
-      <button type="button" class="btn btn-primary" onclick= "showTrainVideo()">Submit</button>
-      <button type="button" class="btn btn-default">Preview</button>
+      <div class="input-group">
+            <span class="input-group-addon">Number of training videos for each class</span>
+            <input type="number" class="form-control" value="3" id = "trainNum">
+            <input type="SUBMIT" value="Submit" class="btn btn-primary" id ="submitButton" onclick="train()">
+      </div>
 
-      <div class = "videoList">
-        {% block video %}{% endblock %}
-      </div>"
+
+      <button type="button" class="btn btn-default" onclick= "previewTrain()" id = "previewButton">Preview</button>
+
+      <div id = "trainVideos">
+
+      </div>
+
+      <div id = "trainDistanceTable">
+
+      </div>
+
+{# ----------------------------Test videos#}
+      <div class="input-group">
+        <span class="input-group-addon">Number of testing videos for each class</span>
+        <input type="number" class="form-control" value="3" id = "testNum">
+        <input type="SUBMIT" value="Submit" class="btn btn-primary" id ="submitButton" onclick="test()">
+      </div>
+
+      <button type="button" class="btn btn-default" onclick= "previewTest()" id = "previewButton">Preview</button>
+
+      <div id = "testVideos">
+
+      </div>
+
+      <div id = "testDistanceTable">
+
+      </div>
+
 
     </div> <!-- /container -->
 
