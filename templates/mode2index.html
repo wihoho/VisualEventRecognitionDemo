@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Visual Event Recognition</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/Bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/static/Bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/Bootstrap/grid.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/ImageGallery/css/style.css">
+    <link rel="stylesheet" href="/static/ImageGallery/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/static/ImageGallery/css/bootstrap-image-gallery.css">
+
+
+      <!--[if lt IE 9]>
+      <script src="/static/Bootstrap/assets/js/html5shiv.js"></script>
+      <script src="/static/Bootstrap//assets/js/respond.min.js"></script>
+    <![endif]-->
+
+      <style>
+        #submitPath {
+            margin: 5px;
+        }
+
+        #videoPath {
+            margin: 5px;
+        }
+
+        .img-rounded {
+            margin-top: 10px;
+        }
+
+
+      </style>
+
+
+<script>
+var frameExtractionProgress = 0;
+var frameProgressController;
+
+var featureExtractionProgress = 0;
+var featureProgressController;
+
+function inputVideo(){
+    frameExtractionProgress = 0;
+
+    document.getElementById("frameBar").innerHTML = "<div class = \"progress\"><div class=\"progress-bar progress-bar-info\" id = \"frameProgress\" role=\"progressbar\" aria-valuenow=\"20\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\"></div></div>"
+
+    var videoPath = $("#videoPath").val()
+
+    $.ajax({
+        type: "GET",
+        data: {path: videoPath},
+        url: "/startFrames",
+
+        success: function(data){
+                document.getElementById("gallery").innerHTML = data;
+        }
+
+    });
+
+
+    frameProgressController = setInterval(pollFrameProgress,1000);
+
+    document.getElementById("featureButton").innerHTML = "<input type=\"submit\" class=\"btn btn-primary\" onclick=\"extractFeatures()\" value=\"Extract features\">";
+
+}
+
+function pollFrameProgress(){
+
+    if(frameExtractionProgress >= 100){
+        clearInterval(frameProgressController);
+    }
+
+    $.ajax({
+
+        type:"GET",
+        url: "/frameProgressBar",
+
+        success: function(data){
+            frameExtractionProgress = parseInt(data);
+            document.getElementById("frameProgress").style.width = frameExtractionProgress.toString().concat("%");
+        }
+    });
+
+}
+
+function extractFeatures(){
+    document.getElementById("featureBar").innerHTML = "<div class = \"progress\"><div class=\"progress-bar progress-bar-info\" id = \"featureProgress\" role=\"progressbar\" aria-valuenow=\"20\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\"></div></div>"
+
+    $.ajax({
+        tpe: "GET",
+        url: "/startFeatures",
+
+        success: function(data){
+            document.getElementById("featureMessage").innerHTML = data;
+        }
+    });
+
+    featureProgressController = setInterval(pollFeatureProgress, 1000);
+
+}
+
+function pollFeatureProgress(){
+
+    if (featureExtractionProgress >= 100){
+        clearInterval(featureProgressController);
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "/featureProgressBar",
+
+        success: function(data){
+            featureExtractionProgress = parseInt(data);
+            document.getElementById("featureProgress").style.width = featureExtractionProgress.toString().concat("%");
+        }
+    });
+}
+
+
+</script>
+
+
+</head>
+
+  <body>
+
+   <div class="container">
+
+      <div class="page-header">
+        <h1>Visual Event Recognition (Mode 2)</h1>
+        <p class="lead">Demo to present how to recognize visual events in videos uploaded by users.</p>
+      </div>
+
+      <input type="file" name="video" id = "videoPath">
+      <input type="submit"class="btn btn-primary" id = "submitPath" onclick="inputVideo()" value="Extract frames">
+
+
+    <div id = "frameBar">
+    </div>
+
+    <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+
+    </div>
+
+    <div id ="featureButton"></div>
+    <div id ="featureBar"></div>
+    <div id = "featureMessage"></div>
+
+
+
+
+
+    </div> <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/Bootstrap/assets/js/jquery.js"></script>
+    <script src="/static/Bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/static/Bootstrap/assets/js/holder.js"></script>
+
+  </body>
+</html>

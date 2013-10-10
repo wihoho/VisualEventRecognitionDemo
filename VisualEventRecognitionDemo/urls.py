@@ -19,7 +19,11 @@ urlpatterns = patterns('',
     url(r'^train/$', 'YoutubeVideos.views.trainSVM'),
     url(r'^previewTestData/$', 'YoutubeVideos.views.selectTestVideos'),
     url(r'^test/$', 'YoutubeVideos.views.testSVM'),
-
+    url(r'^mode2/$', 'ModeTwo.views.index'),
+    url(r'^startFrames/$', 'ModeTwo.views.getFrames'),
+    url(r'^frameProgressBar/$', 'ModeTwo.views.frameExtractProgress'),
+    url(r'^startFeatures/$', 'ModeTwo.views.getFeatures'),
+    url(r'^featureProgressBar/$', 'ModeTwo.views.featureExtractionProgress')
 
 
 
