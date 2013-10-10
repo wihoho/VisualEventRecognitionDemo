@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 {% block predict %}
     {% if distance %}
 
@@ -59,6 +61,11 @@
 
     </table>
 
-
+    <div>
+        <img src="/static/confusionImages/rbf.png" class="img-rounded"  style="width: 500px; height: 400px;">
+        <img src="/static/confusionImages/lap.png" class="img-rounded"  style="width: 500px; height: 400px;">
+        <img src="/static/confusionImages/isd.png" class="img-rounded"  style="width: 500px; height: 400px;">
+        <img src="/static/confusionImages/id.png" class="img-rounded"  style="width: 500px; height: 400px;">
+    </div>
 
 {% endblock %}

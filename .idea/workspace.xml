@@ -6,30 +6,32 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/settings.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381305874231" ignored="false" />
     <file path="/models.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1380727173031" ignored="false" />
-    <file path="/views.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381395293411" ignored="false" />
-    <file path="/index.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1380778301935" ignored="false" />
+    <file path="/views.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381410662437" ignored="false" />
+    <file path="/index.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381403472058" ignored="false" />
     <file path="/blog.sql" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1380727217566" ignored="false" />
-    <file path="/urls.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381392377451" ignored="false" />
+    <file path="/urls.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381403316217" ignored="false" />
     <file path="/generateSQL.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1380773384285" ignored="false" />
-    <file path="/base.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381137870207" ignored="false" />
+    <file path="/base.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381402877118" ignored="false" />
     <file path="$PROJECT_DIR$/../GaussianMixtureModel/calculateDistance.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1380945522131" ignored="false" />
     <file path="/calculateDistance.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1380945522131" ignored="false" />
     <file path="$PROJECT_DIR$/../GaussianMixtureModel/classify.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1380946327546" ignored="false" />
     <file path="/grid.css" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381118390890" ignored="false" />
-    <file path="/Utility.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381395156191" ignored="false" />
+    <file path="/Utility.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381402727497" ignored="false" />
     <file path="/distanceTable.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381137605501" ignored="false" />
-    <file path="/predictionPresentation.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381138959524" ignored="false" />
+    <file path="/predictionPresentation.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381410062868" ignored="false" />
     <file path="$PROJECT_DIR$/../DomainAdaption/DemoTest.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381148770875" ignored="false" />
     <file path="/DemoTest.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381148734604" ignored="false" />
     <file path="$PROJECT_DIR$/../DomainAdaption/SVM_T.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381148067788" ignored="false" />
     <file path="$PROJECT_DIR$/../VideoRecognition/test.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381301243720" ignored="false" />
     <file path="/test.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381297703491" ignored="false" />
-    <file path="/mode2index.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381395018017" ignored="false" />
+    <file path="/mode2index.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381399857350" ignored="false" />
     <file path="$PROJECT_DIR$/../VideoRecognition/parallelLevelOneDistance.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381320826389" ignored="false" />
     <file path="/parallelLevelOneDistance.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381320816892" ignored="false" />
     <file path="/utilities.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381331801911" ignored="false" />
     <file path="$PROJECT_DIR$/../ComputerVision/VideoOpenCV.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381332109831" ignored="false" />
     <file path="/frame.html" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381380899074" ignored="false" />
+    <file path="$PROJECT_DIR$/../VideoRecognition/confusionMatrix.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381408899864" ignored="false" />
+    <file path="/confusionMatrix.py" changelist="b8ef2e02-c85e-4e21-858d-0060e6484576" time="1381410869298" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,41 +56,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ModeTwo/views.py">
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/YoutubeVideos/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="52" selection-start="3164" selection-end="3164" vertical-scroll-proportion="0.68455285">
+            <state line="130" column="32" selection-start="3549" selection-end="3549" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1399#2080#0" expanded="false" />
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#1236#1271#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="confusionMatrix.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/YoutubeVideos/confusionMatrix.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="85" column="58" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.8568995">
+              <folding>
+                <element signature="e#23#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Utility.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ModeTwo/Utility.py">
+        <entry file="file://$PROJECT_DIR$/YoutubeVideos/Utility.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="25" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
+            <state line="74" column="0" selection-start="2186" selection-end="2186" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VisualEventRecognitionDemo/urls.py">
+      <file leaf-file-name="predictionPresentation.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/predictionPresentation.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="29" selection-start="1163" selection-end="1181" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mode2index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/mode2index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="35" selection-start="4290" selection-end="4290" vertical-scroll-proportion="-14.0">
+            <state line="55" column="45" selection-start="1234" selection-end="1234" vertical-scroll-proportion="-14.952381">
               <folding>
-                <element signature="e#3287#3688#0" expanded="false" />
+                <element signature="e#1444#1480#0" expanded="true" />
+                <element signature="e#1554#1590#0" expanded="true" />
+                <element signature="e#1664#1700#0" expanded="true" />
+                <element signature="e#1773#1809#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,28 +112,28 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/YoutubeVideos/static/Bootstrap/grid.css" />
         <option value="$PROJECT_DIR$/YoutubeVideos/static/Bootstrap/dist/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/YoutubeVideos/Utility.py" />
         <option value="$PROJECT_DIR$/templates/distanceTable.html" />
-        <option value="$PROJECT_DIR$/templates/predictionPresentation.html" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/videoList.html" />
-        <option value="$PROJECT_DIR$/YoutubeVideos/views.py" />
         <option value="$PROJECT_DIR$/VisualEventRecognitionDemo/settings.py" />
         <option value="$PROJECT_DIR$/VisualEventRecognitionDemo/utilities.py" />
         <option value="$PROJECT_DIR$/templates/frame.html" />
-        <option value="$PROJECT_DIR$/VisualEventRecognitionDemo/urls.py" />
         <option value="$PROJECT_DIR$/templates/mode2index.html" />
-        <option value="$PROJECT_DIR$/ModeTwo/Utility.py" />
         <option value="$PROJECT_DIR$/ModeTwo/views.py" />
+        <option value="$PROJECT_DIR$/ModeTwo/Utility.py" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/VisualEventRecognitionDemo/urls.py" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/YoutubeVideos/views.py" />
+        <option value="$PROJECT_DIR$/templates/predictionPresentation.html" />
+        <option value="$PROJECT_DIR$/YoutubeVideos/confusionMatrix.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="-1080" />
-    <option name="width" value="1105" />
+    <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -228,7 +236,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="VisualEventRecognitionDemo" />
+              <option name="myItemId" value="YoutubeVideos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="confusionImages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -242,7 +258,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ModeTwo" />
+              <option name="myItemId" value="VisualEventRecognitionDemo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -256,7 +272,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ComputerVision" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../VideoRecognition" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="options.searchVisible" value="true" />
@@ -272,11 +288,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/YoutubeVideos" />
+      <recent name="$PROJECT_DIR$/ModeTwo" />
       <recent name="$PROJECT_DIR$/YoutubeVideos/static/ImageGallery" />
       <recent name="$PROJECT_DIR$/VisualEventRecognitionDemo/demoVideos" />
-      <recent name="$PROJECT_DIR$/YoutubeVideos" />
       <recent name="$PROJECT_DIR$/YoutubeVideos/static/Distances" />
-      <recent name="$PROJECT_DIR$/YoutubeVideos/static/Bootstrap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/YoutubeVideos/static" />
@@ -417,7 +433,9 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -461,18 +479,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1080" width="1105" height="1080" extended-state="0" />
+    <frame x="0" y="-1080" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26534468" sideWeight="0.68191266" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991684" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14994664" sideWeight="0.640625" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3918919" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3180873" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.359375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -542,104 +560,152 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/templates/mode2index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="8" selection-start="3716" selection-end="3716" vertical-scroll-proportion="0.0">
+        <state line="35" column="24" selection-start="1215" selection-end="1215" vertical-scroll-proportion="0.375">
           <folding>
-            <element signature="e#3287#3688#0" expanded="false" />
+            <element signature="e#1540#2353#0" expanded="false" />
+            <element signature="e#2383#2772#0" expanded="false" />
+            <element signature="e#2800#3337#0" expanded="false" />
+            <element signature="e#3369#3955#0" expanded="false" />
+            <element signature="e#3980#4162#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/YoutubeVideos/__init__.py">
+    <entry file="file://$PROJECT_DIR$/sqlite3.db">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YoutubeVideos/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="24" selection-start="233" selection-end="233" vertical-scroll-proportion="0.17088607" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YoutubeVideos/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YoutubeVideos/Utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="22" selection-start="2874" selection-end="2874" vertical-scroll-proportion="0.886076" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YoutubeVideos/static/ImageGallery/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="333" selection-end="333" vertical-scroll-proportion="0.41666666" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/predictionPresentation.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="41" selection-end="41" vertical-scroll-proportion="-0.5714286" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="29" selection-start="1805" selection-end="1805" vertical-scroll-proportion="0.49635038" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/YoutubeVideos/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="26" selection-start="3590" selection-end="3590" vertical-scroll-proportion="0.27860695">
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-            <element signature="e#1152#1187#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualEventRecognitionDemo/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="14" selection-start="4542" selection-end="4542" vertical-scroll-proportion="1.5721393">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/frame.html">
+    <entry file="file://$PROJECT_DIR$/YoutubeVideos/sql/video.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="123" selection-start="154" selection-end="154" vertical-scroll-proportion="-1.1428572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VisualEventRecognitionDemo/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="29" selection-start="1163" selection-end="1181" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/mode2index.html">
+    <entry file="file://$PROJECT_DIR$/ModeTwo/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="35" selection-start="4290" selection-end="4290" vertical-scroll-proportion="-14.0">
+        <state line="127" column="0" selection-start="3713" selection-end="3713" vertical-scroll-proportion="0.48098662">
           <folding>
-            <element signature="e#3287#3688#0" expanded="false" />
+            <element signature="e#23#58#0" expanded="true" />
+            <element signature="e#283#350#0" expanded="false" />
+            <element signature="e#397#1355#0" expanded="false" />
+            <element signature="e#1421#2102#0" expanded="false" />
+            <element signature="e#2144#2228#0" expanded="false" />
+            <element signature="e#2292#2480#0" expanded="false" />
+            <element signature="e#2519#3255#0" expanded="false" />
+            <element signature="e#3301#3380#0" expanded="false" />
+            <element signature="e#4035#4786#0" expanded="false" />
+            <element signature="e#4815#6103#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ModeTwo/Utility.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="25" selection-start="1019" selection-end="1019" vertical-scroll-proportion="0.0">
+        <state line="186" column="47" selection-start="5551" selection-end="5551" vertical-scroll-proportion="0.53578335">
+          <folding>
+            <element signature="e#23#44#0" expanded="true" />
+            <element signature="e#196#266#0" expanded="false" />
+            <element signature="e#391#1741#0" expanded="false" />
+            <element signature="e#1825#2017#0" expanded="false" />
+            <element signature="e#2078#2674#0" expanded="false" />
+            <element signature="e#2721#3867#0" expanded="false" />
+            <element signature="e#3932#4514#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VisualEventRecognitionDemo/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="47" selection-start="609" selection-end="609" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ModeTwo/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="52" selection-start="3164" selection-end="3164" vertical-scroll-proportion="0.68455285">
+        <state line="29" column="0" selection-start="957" selection-end="957" vertical-scroll-proportion="-16.571428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="0" selection-start="2516" selection-end="2516" vertical-scroll-proportion="-8.571428">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp.pgm">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/videoList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="21" selection-start="0" selection-end="23" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Library/Python/2.7/site-packages/matplotlib-1.4.x-py2.7-macosx-10.8-intel.egg/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/YoutubeVideos/static/confusionImages/id.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/YoutubeVideos/Utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="2186" selection-end="2186" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/predictionPresentation.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="45" selection-start="1234" selection-end="1234" vertical-scroll-proportion="-14.952381">
           <folding>
-            <element signature="e#1399#2080#0" expanded="false" />
+            <element signature="e#1444#1480#0" expanded="true" />
+            <element signature="e#1554#1590#0" expanded="true" />
+            <element signature="e#1664#1700#0" expanded="true" />
+            <element signature="e#1773#1809#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/YoutubeVideos/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="32" selection-start="3549" selection-end="3549" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#1236#1271#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/YoutubeVideos/confusionMatrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="58" selection-start="2676" selection-end="2676" vertical-scroll-proportion="0.8568995">
+          <folding>
+            <element signature="e#23#41#0" expanded="true" />
           </folding>
         </state>
       </provider>

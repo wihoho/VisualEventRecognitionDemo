@@ -6,17 +6,16 @@ import os
 import Utility as util
 import cv2
 
-
 #global variables
 frameExtractionProgress = 0
 currentVideoName = ""
 featureExtractionNum= 0
+currentHistogram = None
 
 def index(request):
 
     context = {}
     return render(request, "mode2index.html", context)
-
 
 # Extract frames
 def getFrames(request):
@@ -76,7 +75,6 @@ def getFramesFromVideo(videoPath, folderNameToStoreFrames):
 def frameExtractProgress(request):
 
     global frameExtractionProgress
-    print "frame progress: " +str(frameExtractionProgress)
     return HttpResponse(str(frameExtractionProgress))
 
 # Extract features from frames
@@ -89,8 +87,6 @@ def getFeatures(request):
     extractVideoSIFT(currentVideoName)
 
     return HttpResponse("Extract SIFT features successfully!")
-
-
 
 def extractVideoSIFT(videoName):
     global featureExtractionNum
@@ -117,8 +113,99 @@ def extractVideoSIFT(videoName):
 
 def featureExtractionProgress(request):
     global featureExtractionNum
-    print "feature progress: " +str(featureExtractionNum)
 
     return HttpResponse(str(featureExtractionNum))
+
+# Convert to histogram
+def convertToHistogram(request):
+    global currentVideoName
+    global currentHistogram
+
+    featurePath = "/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/static/features/" +str(currentVideoName)
+    print featurePath
+
+    currentHistogram = util.buildHistogramForVideo(featurePath)
+
+    return HttpResponse("The shape of converted histogram is " +str(currentHistogram.shape))
+
+
+# Classify this user uploaded video
+from YoutubeVideos import views
+import numpy as np
+from sklearn.svm import SVC
+
+
+trainVideoIndices = []
+trainVideos = []
+gramma0 = 0
+classifiers = None
+
+def previewTrainVideos(request):
+    global trainVideoIndices
+    global trainVideos
+    trainVideoIndices = []
+
+    if request.method == "GET":
+        num = request.GET["num"]
+        num = int(num)
+
+        if request.is_ajax():
+            sampleVideos = views.getTrainVideos(num)
+            for labelVideo in sampleVideos:
+                for video in labelVideo:
+                    trainVideoIndices.append(video.indice)
+
+            trainVideos = sampleVideos
+
+            if num > 10:
+                temp = []
+                for videos in trainVideos:
+                    temp.append(videos[:3])
+
+                context = {"videoList": temp}
+            else:
+                context = {"videoList": trainVideos}
+
+            return render(request, "videoList.html", context)
+
+def trainSVM(request):
+    global trainVideoIndices
+    global gramma0
+    global classifiers
+
+    distances = util.loadObject("/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/static/Distances/all_DistanceMatrix_Level0.pkl")
+    labels = util.loadObject("/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/static/Distances/all_labels_Level0.pkl")
+
+    trainDistance = distances[np.ix_(trainVideoIndices, trainVideoIndices)]
+    trainLabels = []
+    for indice in trainVideoIndices:
+        trainLabels.append(labels[indice])
+
+    # Train this SVM classifier
+    distance = trainDistance ** 2
+    gramma0 = 1.0 / np.mean(distance)
+    kernel_params = []
+    kernel_params.append(gramma0)
+
+    baseKernel = util.constructBaseKernels(["rbf", "lap", "isd","id"], kernel_params, distance)
+
+    classifiers = []
+    for k in baseKernel:
+        clf = SVC(kernel="precomputed")
+        clf.fit(k, trainLabels)
+        classifiers.append(clf)
+
+    row, column = trainDistance.shape
+    transferedDistance = []
+    for i in range(row):
+        temp = []
+        for j in range(column):
+            temp.append(int(trainDistance[i][j]))
+        transferedDistance.append(temp)
+
+    context = {"distance": transferedDistance}
+    return render(request, "distanceTable.html", context)
+
+
 
 

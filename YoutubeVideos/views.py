@@ -4,6 +4,8 @@ import random
 import Utility as util
 import numpy as np
 from sklearn.svm import SVC
+from sklearn.metrics import confusion_matrix
+from confusionMatrix import ConfMatrix
 
 trainVideoIndices = []
 trainVideos = None
@@ -135,7 +137,16 @@ def selectTestVideos(request):
                 for video in labelVideo:
                     testVideoIndices.append(video.indice)
 
-            context = {"videoList": testVideos}
+
+            if num > 10:
+                temp = []
+                for videos in testVideos:
+                    temp.append(videos[:3])
+
+                context = {"videoList": temp}
+            else:
+                context = {"videoList": testVideos}
+
             return render(request, "videoList.html", context)
 
 def testSVM(request):
@@ -177,14 +188,19 @@ def testSVM(request):
         accuracy = correct / len(originalLabels)
         accuracies.append(accuracy)
 
+    # Confusion stuff
+    classLabels = ["birthday", "parade", "picnic", "show", "sports", "wedding"]
+    for i in range(len(typeKernels)):
+        cm = ConfMatrix(confusion_matrix(originalLabels, predictLabels[i]), classLabels)
+        cm.gen_conf_matrix(typeKernels[i])
+
     context = {"originalLabels": originalLabels, "predictLabels": predictLabels, "accuracies": accuracies, "distance":transferredDistance}
     return render(request, "predictionPresentation.html", context)
 
+def index(request):
 
-
-
-
-
+    context = {}
+    return render(request, "index.html", context)
 
 
 

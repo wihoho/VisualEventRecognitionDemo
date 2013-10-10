@@ -40,6 +40,10 @@
             margin-top: 10px;
         }
 
+        .input-group-addon {
+            background: black;
+        }
+
 
       </style>
 
@@ -65,15 +69,13 @@ function inputVideo(){
 
         success: function(data){
                 document.getElementById("gallery").innerHTML = data;
+                document.getElementById("featureButton").innerHTML = "<input type=\"submit\" class=\"btn btn-primary\" onclick=\"extractFeatures()\" value=\"Extract features\">";
+
         }
 
     });
 
-
     frameProgressController = setInterval(pollFrameProgress,1000);
-
-    document.getElementById("featureButton").innerHTML = "<input type=\"submit\" class=\"btn btn-primary\" onclick=\"extractFeatures()\" value=\"Extract features\">";
-
 }
 
 function pollFrameProgress(){
@@ -109,12 +111,15 @@ function extractFeatures(){
 
     featureProgressController = setInterval(pollFeatureProgress, 1000);
 
+
 }
 
 function pollFeatureProgress(){
 
     if (featureExtractionProgress >= 100){
         clearInterval(featureProgressController);
+        document.getElementById("histogram").innerHTML = "<input type=\"submit\" class=\"btn btn-primary\" onclick=\"histogramize()\" value=\"Convert features to histogram matrix\">";
+
     }
 
     $.ajax({
@@ -127,6 +132,52 @@ function pollFeatureProgress(){
         }
     });
 }
+
+function histogramize(){
+
+    $.ajax({
+       type: "GET",
+       url: "/histogram",
+
+       success: function(data){
+           document.getElementById("histogramMes").innerHTML = data;
+       }
+    });
+}
+
+
+{#    Train js function #}
+function previewTrain(){
+
+    var numberOfTrainNum = document.getElementById("trainNum").value
+
+    $.ajax({
+        type: "GET",
+        data: {num: numberOfTrainNum},
+        url: "/previewTrainDataMode2",
+
+       success: function(data){
+           document.getElementById("trainVideos").innerHTML = data;
+         }
+    });
+}
+
+function train(){
+    $.ajax({
+        type: "GET",
+        url: "/trainMode2",
+
+        success: function(data){
+            document.getElementById("trainDistanceTable").innerHTML = data;
+        }
+    });
+
+    $('html, body').animate({
+        scrollTop: $("#trainDistanceTable").offset().top
+    }, 1500);
+
+}
+
 
 
 </script>
@@ -158,7 +209,27 @@ function pollFeatureProgress(){
     <div id ="featureBar"></div>
     <div id = "featureMessage"></div>
 
+    <div id = "histogram"></div>
+    <div id = "histogramMes"></div>
 
+
+
+   {#  Train SVM classifier  #}
+   <div class="input-group">
+            <span class="input-group-addon">Number of training videos for each class</span>
+            <input type="number" class="form-control" value="3" id = "trainNum">
+            <input type="SUBMIT" value="Submit" class="btn btn-primary" id ="submitButton" onclick="train()">
+   </div>
+
+   <button type="button" class="btn btn-default" onclick= "previewTrain()" id = "previewButton">Preview</button>
+
+   <div id = "trainVideos">
+
+   </div>
+
+   <div id = "trainDistanceTable">
+
+   </div>
 
 
 

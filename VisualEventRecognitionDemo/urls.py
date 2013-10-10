@@ -13,7 +13,9 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^recognition/$', 'YoutubeVideos.views.recognition'),
+
+    url(r'^index/$', 'YoutubeVideos.views.index'),
+    url(r'^mode1/$', 'YoutubeVideos.views.recognition'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^previewTrainData/$', 'YoutubeVideos.views.previewTrainData'),
     url(r'^train/$', 'YoutubeVideos.views.trainSVM'),
@@ -23,7 +25,11 @@ urlpatterns = patterns('',
     url(r'^startFrames/$', 'ModeTwo.views.getFrames'),
     url(r'^frameProgressBar/$', 'ModeTwo.views.frameExtractProgress'),
     url(r'^startFeatures/$', 'ModeTwo.views.getFeatures'),
-    url(r'^featureProgressBar/$', 'ModeTwo.views.featureExtractionProgress')
+    url(r'^featureProgressBar/$', 'ModeTwo.views.featureExtractionProgress'),
+    url(r'^histogram/$', 'ModeTwo.views.convertToHistogram'),
+
+    url(r'^previewTrainDataMode2/$', 'ModeTwo.views.previewTrainVideos'),
+    url(r'^trainMode2/$', 'ModeTwo.views.trainSVM'),
 
 
 
