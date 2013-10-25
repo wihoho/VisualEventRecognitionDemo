@@ -17,21 +17,28 @@ urlpatterns = patterns('',
     url(r'^index/$', 'YoutubeVideos.views.index'),
     url(r'^mode1/$', 'YoutubeVideos.views.recognition'),
     url(r'^admin/', include(admin.site.urls)),
+
+    # Mode one
     url(r'^previewTrainData/$', 'YoutubeVideos.views.previewTrainData'),
     url(r'^train/$', 'YoutubeVideos.views.trainSVM'),
     url(r'^previewTestData/$', 'YoutubeVideos.views.selectTestVideos'),
     url(r'^test/$', 'YoutubeVideos.views.testSVM'),
+
+    # Mode two
     url(r'^mode2/$', 'ModeTwo.views.index'),
     url(r'^startFrames/$', 'ModeTwo.views.getFrames'),
     url(r'^frameProgressBar/$', 'ModeTwo.views.frameExtractProgress'),
     url(r'^startFeatures/$', 'ModeTwo.views.getFeatures'),
     url(r'^featureProgressBar/$', 'ModeTwo.views.featureExtractionProgress'),
     url(r'^histogram/$', 'ModeTwo.views.convertToHistogram'),
+    url(r'^histogramProgressBar/$', 'ModeTwo.views.histogramProgressFun'),
+
 
     url(r'^previewTrainDataMode2/$', 'ModeTwo.views.previewTrainVideos'),
     url(r'^trainMode2/$', 'ModeTwo.views.trainSVM'),
 
-
+    url(r'^classify/$', 'ModeTwo.views.classifyInputVideo'),
+    url(r'^classifyProgress/$', 'ModeTwo.views.classifyProgress'),
 
 )
 

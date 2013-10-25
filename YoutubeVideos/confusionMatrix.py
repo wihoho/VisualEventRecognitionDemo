@@ -57,6 +57,8 @@ class ConfMatrix:
         return recall
 
     def _gen_conf_matrix(self, fname, labels=None, title=None, threshold=.1, factor=1, normalize=""):
+        plt.ioff()
+
         fname = fname or "conf_matrix"
         labels = labels or self.labels
         matrix = self.m

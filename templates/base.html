@@ -67,12 +67,14 @@ function train(){
 
         success: function(data){
             document.getElementById("trainDistanceTable").innerHTML = data;
+
+            $('html, body').animate({
+                scrollTop: $("#trainDistanceTable").offset().top
+            }, 1500);
         }
     });
 
-    $('html, body').animate({
-        scrollTop: $("#trainDistanceTable").offset().top
-    }, 1500);
+
 
 }
 
@@ -99,12 +101,15 @@ function test(){
 
         success: function(data){
             document.getElementById("testDistanceTable").innerHTML = data;
+
+            $('html, body').animate({
+                scrollTop: $("#testDistanceTable").offset().top
+            }, 1500);
         }
+
     });
 
-    $('html, body').animate({
-        scrollTop: $("#testDistanceTable").offset().top
-    }, 1500);
+
 
 }
 

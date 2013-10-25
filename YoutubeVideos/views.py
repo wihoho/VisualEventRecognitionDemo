@@ -182,11 +182,22 @@ def testSVM(request):
     for i in testVideoIndices:
         originalLabels.append(labels[i])
 
+
+    # videos = Video.objects
+
     accuracies = []
     for prediction in predictLabels:
         correct = sum(1.0 * (prediction == originalLabels))
         accuracy = correct / len(originalLabels)
         accuracies.append(accuracy)
+
+        # for indice in range(0, len(originalLabels), 1):
+        #     if originalLabels[indice] == prediction[indice]:
+        #         videoIndice = testVideoIndices[indice]
+        #         video = videos.filter(indice = videoIndice)
+        #         print video
+
+
 
     # Confusion stuff
     classLabels = ["birthday", "parade", "picnic", "show", "sports", "wedding"]
@@ -195,6 +206,15 @@ def testSVM(request):
         cm.gen_conf_matrix(typeKernels[i])
 
     context = {"originalLabels": originalLabels, "predictLabels": predictLabels, "accuracies": accuracies, "distance":transferredDistance}
+
+
+    # print out correct labelled videos
+
+
+
+
+
+
     return render(request, "predictionPresentation.html", context)
 
 def index(request):

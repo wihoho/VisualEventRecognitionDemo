@@ -55,6 +55,13 @@ var frameProgressController;
 var featureExtractionProgress = 0;
 var featureProgressController;
 
+var histogramExtractionProgress = 0;
+var histogramProgressController;
+
+
+var classifyExtractionProgress = 0;
+var classifyProgressController;
+
 function inputVideo(){
     frameExtractionProgress = 0;
 
@@ -82,6 +89,7 @@ function pollFrameProgress(){
 
     if(frameExtractionProgress >= 100){
         clearInterval(frameProgressController);
+        frameExtractionProgress = 0;
     }
 
     $.ajax({
@@ -118,6 +126,7 @@ function pollFeatureProgress(){
 
     if (featureExtractionProgress >= 100){
         clearInterval(featureProgressController);
+        featureExtractionProgress = 0;
         document.getElementById("histogram").innerHTML = "<input type=\"submit\" class=\"btn btn-primary\" onclick=\"histogramize()\" value=\"Convert features to histogram matrix\">";
 
     }
@@ -134,6 +143,7 @@ function pollFeatureProgress(){
 }
 
 function histogramize(){
+    document.getElementById("histogramBar").innerHTML = "<div class = \"progress\"><div class=\"progress-bar progress-bar-info\" id = \"histogramProgress\" role=\"progressbar\" aria-valuenow=\"20\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\"></div></div>"
 
     $.ajax({
        type: "GET",
@@ -143,8 +153,26 @@ function histogramize(){
            document.getElementById("histogramMes").innerHTML = data;
        }
     });
+
+    histogramProgressController = setInterval(pollHistogramProgress, 1000);
 }
 
+function pollHistogramProgress(){
+    if(histogramExtractionProgress >= 100){
+        clearInterval(histogramProgressController);
+        histogramExtractionProgress = 0;
+    }
+
+    $.ajax({
+       type: "GET",
+       url: "/histogramProgressBar",
+
+       success: function(data){
+           histogramExtractionProgress = parseInt(data);
+           document.getElementById("histogramProgress").style.width = histogramExtractionProgress.toString().concat("%");
+       }
+    });
+}
 
 {#    Train js function #}
 function previewTrain(){
@@ -169,6 +197,9 @@ function train(){
 
         success: function(data){
             document.getElementById("trainDistanceTable").innerHTML = data;
+
+            document.getElementById("classify").innerHTML = "<input type=\"submit\" class=\"btn btn-primary\" onclick=\"classify()\" value=\"Recognize the test video\">";
+
         }
     });
 
@@ -179,6 +210,41 @@ function train(){
 }
 
 
+function classify(){
+
+    document.getElementById("classifyBar").innerHTML = "<div class = \"progress\"><div class=\"progress-bar progress-bar-info\" id = \"classifyProgress\" role=\"progressbar\" aria-valuenow=\"20\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 0%\"></div></div>"
+
+    $.ajax({
+       type: "GET",
+       url: "/classify",
+
+       success:function(data){
+           document.getElementById("predictResult").innerHTML = data;
+       }
+    });
+
+    classifyProgressController = setInterval(pollClassifyHistogram, 1000);
+}
+
+function pollClassifyHistogram(){
+
+    if (classifyExtractionProgress >= 100){
+        clearInterval(classifyProgressController);
+        classifyExtractionProgress = 0;
+    }
+
+    $.ajax({
+        type:"GET",
+        url: "/classifyProgress",
+
+        success: function(data){
+            classifyExtractionProgress = parseInt(data);
+            document.getElementById("classifyProgress").style.width = classifyExtractionProgress.toString().concat("%");
+        }
+
+
+    });
+}
 
 </script>
 
@@ -210,7 +276,10 @@ function train(){
     <div id = "featureMessage"></div>
 
     <div id = "histogram"></div>
+    <div id = "histogramBar"></div>
     <div id = "histogramMes"></div>
+
+
 
 
 
@@ -228,6 +297,19 @@ function train(){
    </div>
 
    <div id = "trainDistanceTable">
+
+   </div>
+
+   <div id = "classify">
+
+   </div>
+
+   <div id = "classifyBar">
+
+   </div>
+
+
+   <div id = "predictResult">
 
    </div>
 
