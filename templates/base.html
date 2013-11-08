@@ -39,6 +39,12 @@
                 margin-bottom: 10px;
             }
 
+         td.upper_line { border-top:solid 1px black; }
+    table.fraction { text-align: center; vertical-align: middle;
+        margin-top:0.5em; margin-bottom:0.5em; line-height: 2em; }
+
+          h3 {display:inline-block;  }
+
       </style>
 
 
@@ -81,11 +87,8 @@ function train(){
 
 function previewTest(){
 
-    var numberOfTestNum = document.getElementById("testNum").value
-
     $.ajax({
         type: "GET",
-        data: {num: numberOfTestNum},
         url: "/previewTestData",
 
        success: function(data){
@@ -120,6 +123,7 @@ function test(){
 
   <body>
 
+
    <div class="container">
 
       <div class="page-header">
@@ -127,42 +131,108 @@ function test(){
         <p class="lead">Demo to present how to recognize visual events in unlabelled videos.</p>
       </div>
 
-      <div class="input-group">
-            <span class="input-group-addon">Number of training videos for each class</span>
-            <input type="number" class="form-control" value="3" id = "trainNum">
-            <input type="SUBMIT" value="Submit" class="btn btn-primary" id ="submitButton" onclick="train()">
+
+
+     <div class="panel panel-success">
+
+         <div class="panel-heading">
+          <h3 class="panel-title">Data Set</h3>
+        </div>
+
+          <table class = "table" align="center">
+
+           <tr>
+             <td> birthday </td>
+             <td> parade </td>
+             <td> picnic </td>
+             <td> show </td>
+             <td> sports </td>
+             <td> wedding </td>
+             <td>total</td>
+           </tr>
+
+          <tr>
+              <td>81</td>
+              <td>76</td>
+              <td>56</td>
+              <td>110</td>
+              <td>179</td>
+              <td>62</td>
+              <td>564</td>
+          </tr>
+
+          </table>
       </div>
 
 
-      <button type="button" class="btn btn-default" onclick= "previewTrain()" id = "previewButton">Preview</button>
+
+<div class="panel panel-info">
+ <div class="panel-heading">
+  <h3 class="panel-title">Training Videos</h3>
+</div>
+
+    <div class="panel-body">
+
+      <div class="input-group">
+
+            <h3><span class="label label-default" >Number of training videos for each class (less than 60)</span></h3>
+            &nbsp;
+            <input type="number" class="form-control" value="20" id = "trainNum">
+            &nbsp;
+            <button type="button" class="btn btn-default" onclick= "previewTrain()" id = "previewButton">Preview</button>
+            &nbsp;
+            <input type="SUBMIT" value="Build" class="btn btn-primary" id ="submitButton" onclick="train()">
+      </div>
+
 
       <div id = "trainVideos">
 
       </div>
 
-      <div id = "trainDistanceTable">
+      <div id = "trainDistanceTable" style="overflow: scroll">
 
       </div>
+    </div>
+
+</div>
+
+
+
 
 {# ----------------------------Test videos#}
+<div class="panel panel-warning">
+ <div class="panel-heading">
+  <h3 class="panel-title">Testing Videos</h3>
+</div>
+
+    <div class="panel-body">
       <div class="input-group">
-        <span class="input-group-addon">Number of testing videos for each class</span>
-        <input type="number" class="form-control" value="3" id = "testNum">
-        <input type="SUBMIT" value="Submit" class="btn btn-primary" id ="submitButton" onclick="test()">
+        <button type="button" class="btn btn-default" onclick= "previewTest()" id = "previewButton">Preview</button>
+        <input type="SUBMIT" value="Recognize" class="btn btn-primary" id ="submitButton" onclick="test()">
       </div>
 
-      <button type="button" class="btn btn-default" onclick= "previewTest()" id = "previewButton">Preview</button>
 
       <div id = "testVideos">
 
       </div>
 
-      <div id = "testDistanceTable">
+    </div> <!-- /container -->
+</div>
+
+
+<div class="panel panel-danger">
+ <div class="panel-heading">
+  <h3 class="panel-title">Results</h3>
+</div>
+
+    <div class="panel-body">
+
+        <div id = "testDistanceTable">
 
       </div>
+</div>
+</div>
 
-
-    </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

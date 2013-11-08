@@ -1,71 +1,35 @@
 {% load staticfiles %}
 
 {% block predict %}
-    {% if distance %}
-
-    <table class = "table">
-       {% for i in distance %}
-           <tr>
-                {% for j in i %}
-                    <td>{{ j }}</td>
-                {% endfor %}
-
-           </tr>
-       {% endfor %}
-    </table>
 
 
-    {% endif %}
+<table class="fraction" align="center" cellpadding="0" cellspacing="0" style=" font-size:25px">
+    <tr>
+        <td rowspan="2" nowrap="nowrap">
+            <i>Recognition Accuracy</i> =&nbsp;
+        </td>
+        <td nowrap="nowrap">
+            {{ nominator }}
+        </td>
 
-    <table class = "table">
+           <td rowspan="2" nowrap="nowrap">
+                &nbsp; = {{ accuracy }}
+        </td>
+    </tr>
 
-       <tr>
-            <td>Original Labels</td>
-{#            {% for label in originalLabels %}#}
-{#                <td>{{ label }}</td>#}
-{#            {% endfor %}#}
-            <td>Accuracy</td>
-       </tr>
+    <tr>
+        <td class="upper_line">
+            {{ denominator }}
+        </td>
+    </tr>
 
-       <tr>
-           <td>RBF Kernel</td>
-{#           {% for label in predictLabels.0 %}#}
-{#               <td>{{ label }}</td>#}
-{#           {% endfor %}#}
-           <td>{{ accuracies.0 }}</td>
-       </tr>
+</table>
 
-       <tr>
-           <td>LAP Kernel</td>
-{#           {% for label in predictLabels.1 %}#}
-{#               <td>{{ label }}</td>#}
-{#           {% endfor %}#}
-           <td>{{ accuracies.1 }}</td>
-       </tr>
-
-       <tr>
-           <td>ISD Kernel</td>
-{#           {% for label in predictLabels.2 %}#}
-{#               <td>{{ label }}</td>#}
-{#           {% endfor %}#}
-           <td>{{ accuracies.2 }}</td>
-       </tr>
-
-       <tr>
-           <td>ID Kernel</td>
-{#           {% for label in predictLabels.3 %}#}
-{#               <td>{{ label }}</td>#}
-{#           {% endfor %}#}
-           <td>{{ accuracies.3 }}</td>
-       </tr>
-
-    </table>
 
     <div>
-        <img src="/static/confusionImages/rbf.png" class="img-rounded"  style="width: 500px; height: 400px;">
-        <img src="/static/confusionImages/lap.png" class="img-rounded"  style="width: 500px; height: 400px;">
-        <img src="/static/confusionImages/isd.png" class="img-rounded"  style="width: 500px; height: 400px;">
-        <img src="/static/confusionImages/id.png" class="img-rounded"  style="width: 500px; height: 400px;">
+        <center>
+        <img src="/static/confusionImages/confusion.png" class="img-rounded"  style="width:700px">
+        </center>
     </div>
 
 {% endblock %}

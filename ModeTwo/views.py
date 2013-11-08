@@ -6,6 +6,8 @@ import os
 import Utility as util
 import cv2
 from scipy.cluster.vq import *
+from scipy.io import loadmat
+import math
 
 
 #global variables
@@ -189,73 +191,68 @@ def histogramProgressFun(request):
     return HttpResponse(str(histogramProgress))
 
 
-
 # Classify this user uploaded video
-from YoutubeVideos import views
 import numpy as np
-from sklearn.svm import SVC
+from YoutubeVideos.recognition import Base
+from YoutubeVideos.models import Video
 
-
-trainVideoIndices = []
-trainVideos = []
-gramma0 = 0
+trainVideoIndices = None
+testVideoIndices = None
 classifiers = None
+gramma0 = None
 
-def previewTrainVideos(request):
+
+
+def previewTrainData(request):
+
     global trainVideoIndices
-    global trainVideos
-    trainVideoIndices = []
+    global testVideoIndices
 
     if request.method == "GET":
         num = request.GET["num"]
         num = int(num)
 
         if request.is_ajax():
-            sampleVideos = views.getTrainVideos(num)
-            for labelVideo in sampleVideos:
-                for video in labelVideo:
-                    trainVideoIndices.append(video.indice)
 
-            trainVideos = sampleVideos
+            trainIndices, testIndices = Base.randomYoutubeIndices(num)
+            allLabels = util.loadObject("/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/recognition/all_labels_Level0.pkl")
 
-            if num > 10:
-                temp = []
-                for videos in trainVideos:
-                    temp.append(videos[:3])
+            trainVideosWithLabels = []
+            for l in ["birthday", "parade", "picnic", "show", "sports", "wedding"]:
+                tempVideos = []
+                for v in trainIndices:
+                    if allLabels[v] == l:
+                        video = Video.objects.filter(indice = v)
+                        tempVideos.append(video[0])
+                trainVideosWithLabels.append(tempVideos)
 
-                context = {"videoList": temp}
-            else:
-                context = {"videoList": trainVideos}
 
+            temp = []
+            for videos in trainVideosWithLabels:
+                temp.append(videos[:3])
+
+            context = {"videoList": temp}
+
+
+            trainVideoIndices = trainIndices
+            testVideoIndices = testIndices
             return render(request, "videoList.html", context)
 
 def trainSVM(request):
     global trainVideoIndices
-    global gramma0
     global classifiers
+    global gramma0
 
-    distances = util.loadObject("/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/static/Distances/all_DistanceMatrix_Level0.pkl")
-    labels = util.loadObject("/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/static/Distances/all_labels_Level0.pkl")
 
-    trainDistance = distances[np.ix_(trainVideoIndices, trainVideoIndices)]
-    trainLabels = []
-    for indice in trainVideoIndices:
-        trainLabels.append(labels[indice])
+    distanceOne = util.loadObject("/Users/GongLi/PycharmProjects/DomainAdaption/Distances/voc1000/All/GMM_ALL_Distance.pkl")
+    distances = []
+    distances.append(distanceOne)
 
-    # Train this SVM classifier
-    distance = trainDistance ** 2
-    gramma0 = 1.0 / np.mean(distance)
-    kernel_params = []
-    kernel_params.append(gramma0)
+    labels = loadmat("/Users/GongLi/PycharmProjects/DomainAdaption/labels.mat")['labels']
+    classifiers, gramma0 = Base.buildClassifiers(distances, labels, trainVideoIndices)
 
-    baseKernel = util.constructBaseKernels(["rbf", "lap", "isd","id"], kernel_params, distance)
-
-    classifiers = []
-    for k in baseKernel:
-        clf = SVC(kernel="precomputed")
-        clf.fit(k, trainLabels)
-        classifiers.append(clf)
-
+    # show training distsnce matrix
+    trainDistance = distanceOne[np.ix_(trainVideoIndices, trainVideoIndices)]
     row, column = trainDistance.shape
     transferedDistance = []
     for i in range(row):
@@ -289,36 +286,63 @@ def calculateDistanceToTrainingVideos(testHistogramMatrix, trainingVideosPath):
 def classifyInputVideo(request):
     global classifyPro
 
-
     global currentHistogram
-    global classifiers
     global gramma0
-    global trainVideos
+    global trainVideoIndices
+    global classifiers
+
 
     trainVideoHistogramPath = []
-    for labelVideo in trainVideos:
-        for trainVideo in labelVideo:
-            videoName = trainVideo.path[:-4]
-            label = videoName.split("/")[0]
-            videoName = videoName.split("/")[1]
-            videoName = "Histogram_"+videoName+".pkl"
+    for indice in trainVideoIndices:
+        video = Video.objects.filter(indice = indice)
 
-            fullPath = "/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/static/YoutubeCompressedDataHistogramOnly/"+label+"/" +videoName
-            trainVideoHistogramPath.append(fullPath)
+        videoName = video[0].path[:-4]
+        label = videoName.split("/")[0]
+        videoName = videoName.split("/")[1]
+        videoName = "Histogram_"+videoName+".pkl"
+
+        fullPath = "/Users/GongLi/PycharmProjects/VisualEventRecognitionDemo/YoutubeVideos/static/YoutubeCompressedDataHistogramOnly/"+label+"/" +videoName
+        trainVideoHistogramPath.append(fullPath)
 
     # calculate distances & construct gram matrix
     dis = calculateDistanceToTrainingVideos(currentHistogram, trainVideoHistogramPath)
     kernel_params = []
-    kernel_params.append(gramma0)
+    kernel_params = [gramma0 *(2 ** index) for index in range(-3, 2, 1)]
     dis = dis ** 2
     baseKernels = util.constructBaseKernels(["rbf", "lap", "isd", "id"], kernel_params, dis)
 
     # classify
-    typeKernels = ["rbf", "lap", "isd", "id"]
-    predictLabels = []
-    for i in range(len(typeKernels)):
-        clf = classifiers[i]
-        predictLabels.append(clf.predict(baseKernels[i]))
+    scores = []
+    for numberOfClass in range(len(classifiers)):
+        classClassifiers = classifiers[numberOfClass]
+        finalTestScores = np.zeros((1))
+
+        for m in range(len(baseKernels)):
+            baseKernel = baseKernels[m]
+            Ktest = baseKernel
+
+            clf = classClassifiers[m]
+            dv = clf.decision_function(Ktest)
+            finalTestScores = np.vstack((finalTestScores, dv))
+
+
+        # Fuse final scores together
+        finalTestScores = finalTestScores[1:]
+
+        tempFinalTestScores = 1.0 / (1 + math.e **(-finalTestScores))
+        finalTestScores = np.mean(tempFinalTestScores, axis = 0)
+
+        scores.append(finalTestScores)
+
+    # Find the label with the largest score
+    scores = np.vstack(scores)
+    print scores
+
+    ranks = np.argmax(scores, axis=0)
+
+    labelSet = ["birthday", "parade", "picnic", "show", "sports", "wedding"]
+    predictLabels = [labelSet[i] for i in ranks]
+
 
     classifyPro = 100
 

@@ -35,6 +35,11 @@ def loadObject(fileName):
     obj = pickle.load(file)
     return obj
 
+def storeObject(fileName, obj):
+    file = open(fileName, "wb")
+    pickle.dump(obj, file)
+    file.close()
+
 def generateBinaryLabels(compressedLabels):
 
     setlabels = ["birthday","parade","picnic","show", "sports", "wedding"]
@@ -74,24 +79,30 @@ def generateRandomIndices(semanticLabels, sampleNumberFromEachClass):
 
     return trainingIndice, testingIndice
 
-def constructBaseKernels(kernel_type, kernel_params, D2):
+def averagePrecision(scores, labels):
 
-    baseKernels = []
+    scores = scores.flatten()
+    sortingIndice = np.argsort(scores)
+    sortedLabels = [labels[i] for i in sortingIndice[::-1]]
 
-    for i in range(len(kernel_type)):
+    times = 0
+    accumulated = 0
+    for i in range(len(sortedLabels)):
+        if sortedLabels[i] == 1:
 
-        for j in range(len(kernel_params)):
+            times += 1
+            postive = 0
+            for item in sortedLabels[:i+1]:
+                if item == 1:
+                    postive += 1
+            accumulated += postive / float(i+1)
 
-            type = kernel_type[i]
-            param = kernel_params[j]
+    return accumulated / times
 
-            if type == "rbf":
-                baseKernels.append(math.e **(- param * D2))
-            elif type == "lap":
-                baseKernels.append(math.e **(- (param * D2) ** (0.5)))
-            elif type == "id":
-                baseKernels.append(1.0 / ((param * D2) ** (0.5) + 1))
-            elif type == "isd":
-                baseKernels.append(1.0 / (param * D2 + 1))
 
-    return baseKernels
+def evaluateAccuracy(predictions, trueLabels):
+
+    temp = predictions == trueLabels
+    correct = sum(1.0 * (predictions == trueLabels))
+    accuracy = correct / len(trueLabels)
+    return accuracy

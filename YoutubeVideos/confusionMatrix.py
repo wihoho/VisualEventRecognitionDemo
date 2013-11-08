@@ -88,7 +88,7 @@ class ConfMatrix:
                     value = "%2.0f" %(matrix[x][y]*factor)
                     ax.annotate(value, xy=(y, x),
                                 horizontalalignment='center',
-                                verticalalignment='center', color='yellow')
+                                verticalalignment='center', color='green')
 
         cb = fig.colorbar(res)
 

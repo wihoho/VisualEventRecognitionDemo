@@ -8,7 +8,6 @@ import numpy as np
 import subprocess as sub
 import cv2
 
-
 def loadObject(fileName):
     file = open(fileName, "rb")
     obj = pickle.load(file)

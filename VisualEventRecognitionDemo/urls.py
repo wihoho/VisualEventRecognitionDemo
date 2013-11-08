@@ -34,7 +34,7 @@ urlpatterns = patterns('',
     url(r'^histogramProgressBar/$', 'ModeTwo.views.histogramProgressFun'),
 
 
-    url(r'^previewTrainDataMode2/$', 'ModeTwo.views.previewTrainVideos'),
+    url(r'^previewTrainDataMode2/$', 'ModeTwo.views.previewTrainData'),
     url(r'^trainMode2/$', 'ModeTwo.views.trainSVM'),
 
     url(r'^classify/$', 'ModeTwo.views.classifyInputVideo'),
