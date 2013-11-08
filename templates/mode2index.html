@@ -44,7 +44,11 @@
             background: black;
         }
 
+        h3 {display:inline-block;  }
 
+        .form-control {
+            width: 15%;
+        }
       </style>
 
 
@@ -113,7 +117,11 @@ function extractFeatures(){
         url: "/startFeatures",
 
         success: function(data){
-            document.getElementById("featureMessage").innerHTML = data;
+            document.getElementById("featureMessage").innerHTML =
+                    "<div class=\"alert alert-success\">" +
+                    data +
+                    "</div>"
+            ;
         }
     });
 
@@ -150,7 +158,11 @@ function histogramize(){
        url: "/histogram",
 
        success: function(data){
-           document.getElementById("histogramMes").innerHTML = data;
+           document.getElementById("histogramMes").innerHTML =
+                "<div class=\"alert alert-success\">" +
+                   data +
+                "</div>"
+           ;
        }
     });
 
@@ -260,58 +272,85 @@ function pollClassifyHistogram(){
         <p class="lead">Demo to present how to recognize visual events in videos uploaded by users.</p>
       </div>
 
-      <input type="file" name="video" id = "videoPath">
+ <div class="panel panel-success" style="background: #222; color: #fff;">
+
+     <div class="panel-heading">
+      <h3 class="panel-title">Upload Video</h3>
+    </div>
+    <div class="panel-body">
+
+      <input type="file" name="video" id = "videoPath" style ="display:inline-block">
       <input type="submit"class="btn btn-primary" id = "submitPath" onclick="inputVideo()" value="Extract frames">
 
 
-    <div id = "frameBar">
+    <div id = "frameBar" style="margin-top: 15px">
     </div>
 
     <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
 
     </div>
 
-    <div id ="featureButton"></div>
-    <div id ="featureBar"></div>
-    <div id = "featureMessage"></div>
+    <div id ="featureButton" style="margin-top: 15px"></div>
+    <div id ="featureBar" style="margin-top: 15px"></div>
+    <div id = "featureMessage" ></div>
 
     <div id = "histogram"></div>
-    <div id = "histogramBar"></div>
+    <div id = "histogramBar" style="margin-top: 15px"></div>
     <div id = "histogramMes"></div>
 
+    </div>
 
+ </div>
 
+ <div class="panel panel-info" style="background: #222; color: #fff;">
+
+     <div class="panel-heading">
+      <h3 class="panel-title">Training Videos</h3>
+    </div>
+    <div class="panel-body">
 
 
    {#  Train SVM classifier  #}
    <div class="input-group">
-            <span class="input-group-addon">Number of training videos for each class</span>
+            <h3><span class="label label-default" >Number of training videos for each class</span></h3>
+                   &nbsp;
             <input type="number" class="form-control" value="30" id = "trainNum">
+                   &nbsp;
+            <button type="button" class="btn btn-default" onclick= "previewTrain()" id = "previewButton">Preview</button>
+                   &nbsp;
             <input type="SUBMIT" value="Submit" class="btn btn-primary" id ="submitButton" onclick="train()">
    </div>
 
-   <button type="button" class="btn btn-default" onclick= "previewTrain()" id = "previewButton">Preview</button>
 
    <div id = "trainVideos">
 
    </div>
 
-   <div id = "trainDistanceTable">
+   <div id = "trainDistanceTable" style="overflow: scroll; margin-top: 15px">
 
    </div>
 
-   <div id = "classify">
+   <div id = "classify" style="margin-top: 15px">
 
    </div>
 
-   <div id = "classifyBar">
+   <div id = "classifyBar" style="margin-top: 15px">
 
    </div>
+</div>
+ </div>
 
+<div class="panel panel-danger" style="background: #222; color: #fff;">
 
+ <div class="panel-heading">
+  <h3 class="panel-title">Predict Label</h3>
+</div>
+<div class="panel-body">
    <div id = "predictResult">
 
    </div>
+
+</div></div>
 
 
 

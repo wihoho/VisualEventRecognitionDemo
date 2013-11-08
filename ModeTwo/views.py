@@ -291,7 +291,7 @@ def classifyInputVideo(request):
     global trainVideoIndices
     global classifiers
 
-
+    classifyPro = 0
     trainVideoHistogramPath = []
     for indice in trainVideoIndices:
         video = Video.objects.filter(indice = indice)
@@ -336,7 +336,10 @@ def classifyInputVideo(request):
 
     # Find the label with the largest score
     scores = np.vstack(scores)
-    print scores
+
+    tempScores = []
+    for i in range(scores.shape[0]):
+        tempScores.append(scores[i][0])
 
     ranks = np.argmax(scores, axis=0)
 
@@ -346,7 +349,7 @@ def classifyInputVideo(request):
 
     classifyPro = 100
 
-    context = {"labels": predictLabels}
+    context = {"labels": predictLabels[0], "scores": tempScores}
     return render(request, "predictResults.html", context)
 
 
